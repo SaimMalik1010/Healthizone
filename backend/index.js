@@ -3,6 +3,9 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '1.1.1.1']);
+
 dotenv.config();
 connectDB();
 
