@@ -28,7 +28,7 @@ const jwt = require('jsonwebtoken');
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     const otpExpiry = new Date(Date.now() + 10 * 60 * 1000); // OTP expires in 10 minutes
 
-    user = await User.create({
+    const user = await User.create({
       name,
       email,
       password: hashedPassword,
@@ -36,6 +36,9 @@ const jwt = require('jsonwebtoken');
       otpExpiry,
       verified: false,
     });
+
+      // --- CREATE THE MESSAGE VARIABLE HERE ---
+      const message = `Welcome to Healthizone ${name}!\n\nThank you for registering. Your OTP is ${otp}. It will expire in 10 minutes.`;
 
       await sendEmail({
         email: user.email,
