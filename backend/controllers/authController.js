@@ -13,7 +13,7 @@ const jwt = require('jsonwebtoken');
   const registerUser = async (req, res) => {
     const { name, email, password } = req.body;
 
-  try {
+    try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
@@ -25,15 +25,24 @@ const jwt = require('jsonwebtoken');
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const user =  await User.create({ name, email, password: hashedPassword });
-    if(user) {
-      otp = Math.floor(100000 + Math.random() * 900000).toString();
-      const otpExpiry = new Date(Date.now() + 10 * 60 * 1000); // OTP expires in 10 minutes
-      const message = `Welcome to Healthizone ${name}! \n\nThank you for registering. Your OTP is ${otp}. It will expire in 10 minutes.`;
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    const otpExpiry = new Date(Date.now() + 10 * 60 * 1000); // OTP expires in 10 minutes
+
+    user = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+      otp,
+      otpExpiry,
+      verified: false,
+    });
+
       await sendEmail({
         email: user.email,
+        to: user.email,
         subject: 'Healthizone - Verify your email',
-        message
+        message,
+        text: message,
       });
 
       res.status(201).json({
@@ -45,10 +54,8 @@ const jwt = require('jsonwebtoken');
           token: generateToken(user.id),
         });
       }
-      else {
-        res.status(400).json({message: "Invalid user data"});
-      }
-    } catch(error) {
+    
+    catch(error) {
       res.status(400).json({message: "Error registering user", error: error.message});
     }
   };
