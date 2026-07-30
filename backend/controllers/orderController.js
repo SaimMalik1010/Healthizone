@@ -1,0 +1,84 @@
+const Order = require("../model/order");
+
+//@desc     Create a new order
+const createOrder = async (req, res) => {
+  try {
+    const { items, totalPrice, shippingAddress, paymentId } = req.body;
+    if (!items || items.length === 0) {
+      return res.status(400).json({ message: "No order items" });
+    }
+    else{
+            const order = await Order.create({
+            user: req.user.id,
+            items,
+            totalPrice,
+            shippingAddress,
+            paymentId
+    });
+    await order.save();
+    res.status(201).json(order);
+    }
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+// @desc    Get all orders (admin only)
+const getOrders = async (req, res) => {
+    try {
+        const orders = await Order.find().populate('user', 'id name email');
+        res.json(orders);
+    }
+    catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+// @desc    Get orders for the logged-in user
+const myOrders = async (req, res) => {
+    try {
+        const orders = await Order.find({ user: req.user.id }).populate('items.productId', 'name price');
+        res.json(orders);
+    }
+    catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+// @desc    Get a single order by ID (admin only)
+const getOrderById = async (req, res) => {
+    try {
+        const order = await Order.findById(req.params.id).populate('user', 'id name email');
+        if (order) {
+            res.json(order);
+        } else {
+            res.status(404).json({ message: "Order not found" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// @desc    Delete an order
+const deleteOrder = async (req, res) => {
+    try {
+        const order = await Order.findById(req.params.id)
+        if(order){
+            await order.remove();
+            res.json({message:"Order Deleted"});
+        }
+        else
+            res.status(404).json({message:"Order not found"});
+    }
+    catch {
+        res.status(500).json({message:error.message});
+    }
+}
+
+module.exports = {
+  createOrder,
+  getOrders,
+  myOrders,
+  getOrderById,
+  deleteOrder
+};
