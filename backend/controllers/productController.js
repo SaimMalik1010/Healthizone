@@ -1,4 +1,4 @@
-const Product = require("../models/productModel");
+const Product = require("../model/product");
 const cloudinary = require("../config/cloudinary");
 
 // @desc    Get all products
