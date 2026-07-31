@@ -7,17 +7,17 @@ const createOrder = async (req, res) => {
     if (!items || items.length === 0) {
       return res.status(400).json({ message: "No order items" });
     }
-    else{
-            const order = await Order.create({
-            user: req.user.id,
-            items,
-            totalPrice,
-            shippingAddress,
-            paymentId
+    const order = await Order.create({
+      user: req.user.id,
+      items,
+      totalPrice,
+      shippingAddress,
+      paymentId,
+      status: "Pending", // Default status
     });
-    await order.save();
+
     res.status(201).json(order);
-    }
+  
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -59,6 +59,24 @@ const getOrderById = async (req, res) => {
     }
 };
 
+const updateOrderStatus = async (req, res) => {
+  try {
+    const { status } = req.body;
+    const order = await Order.findById(req.params.id);
+
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    order.status = status;
+    const updatedOrder = await order.save();
+
+    res.json({ message: "Order status updated", order: updatedOrder });
+  } catch (error) {
+    res.status(500).json({ message: "Error updating order status", error: error.message });
+  }
+};
+
 // @desc    Delete an order
 const deleteOrder = async (req, res) => {
     try {
@@ -80,5 +98,6 @@ module.exports = {
   getOrders,
   myOrders,
   getOrderById,
+  updateOrderStatus,
   deleteOrder
 };

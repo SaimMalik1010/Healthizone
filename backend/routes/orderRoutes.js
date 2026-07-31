@@ -1,14 +1,34 @@
 const express = require("express");
-const {protect} = require("../middleware/authMiddleware");
 const {admin} = require("../middleware/adminMiddleware");
+const {protect} = require("../middleware/authMiddleware");
 const router = express.Router();
+const {
+  createOrder,
+  getOrders,
+  myOrders,
+  getOrderById,
+  updateOrderStatus,
+  updateOrderAddress,
+  cancelOrder,
+} = require("../controllers/orderController");
 
-const {createOrder, getOrders, myOrders, getOrderById, updateOrder, deleteOrder} = require("../controllers/orderController");
+// Admin: Get all orders | User: Create order
+router.route("/")
+  .post(protect, createOrder)
+  .get(protect, admin, getOrders);
 
-router.route("/").post(protect, createOrder).get(protect, admin, getOrders);
-router.route("/myOrders").get(protect, myOrders).put(protect, updateOrder).delete(protect, deleteOrder);
-router.route("/:id").get(protect, admin, getOrderById);
-router.route("/:id/status").put(protect, admin, updateOrder);
+// User: Get logged-in user's orders
+router.route("/myOrders").get(protect, myOrders);
 
+// Operations on a single specific order
+router.route("/:id")
+  .get(protect, getOrderById) // User (owner) or Admin can view
+  .put(protect, updateOrderAddress); // User updates shipping address (if allowed)
+
+// User: Cancel an order (updates status to 'Cancelled')
+router.route("/:id/cancel").put(protect, cancelOrder);
+
+// Admin: Update order status (Processing, Shipped, Delivered, etc.)
+router.route("/:id/status").put(protect, admin, updateOrderStatus);
 
 module.exports = router;
