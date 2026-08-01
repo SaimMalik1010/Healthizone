@@ -77,6 +77,39 @@ const updateOrderStatus = async (req, res) => {
   }
 };
 
+// @desc    Update shipping address (User)
+// @route   PUT /api/orders/:id
+// @access  Private
+const updateOrderAddress = async (req, res) => {
+  try {
+    const { shippingAddress } = req.body;
+    const order = await Order.findById(req.params.id);
+
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    // Authorization check
+    if (order.user.toString() !== req.user.id) {
+      return res.status(403).json({ message: "Not authorized" });
+    }
+
+    // Threshold Check: Address can only be changed before shipping
+    if (order.status === "Shipped" || order.status === "Delivered" || order.status === "Cancelled") {
+      return res.status(400).json({
+        message: `Cannot update address. Order status is already ${order.status}`,
+      });
+    }
+
+    order.shippingAddress = shippingAddress || order.shippingAddress;
+    const updatedOrder = await order.save();
+
+    res.json({ message: "Shipping address updated", order: updatedOrder });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 // @desc    Cancel an order (User)
 // @route   PUT /api/orders/:id/cancel
 // @access  Private
@@ -118,5 +151,6 @@ module.exports = {
   myOrders,
   getOrderById,
   updateOrderStatus,
+  updateOrderAddress,
   cancelOrder
 };
