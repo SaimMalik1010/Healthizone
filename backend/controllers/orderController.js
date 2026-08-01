@@ -77,21 +77,40 @@ const updateOrderStatus = async (req, res) => {
   }
 };
 
-// @desc    Delete an order
-const deleteOrder = async (req, res) => {
-    try {
-        const order = await Order.findById(req.params.id)
-        if(order){
-            await order.remove();
-            res.json({message:"Order Deleted"});
-        }
-        else
-            res.status(404).json({message:"Order not found"});
+// @desc    Cancel an order (User)
+// @route   PUT /api/orders/:id/cancel
+// @access  Private
+const cancelOrder = async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id);
+
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
     }
-    catch {
-        res.status(500).json({message:error.message});
+
+    // Authorization check
+    if (order.user.toString() !== req.user.id) {
+      return res.status(403).json({ message: "Not authorized to cancel this order" });
     }
-}
+
+    // Threshold Check: Block cancellation if already dispatched or terminal
+    const nonCancellableStatuses = ["Shipped", "Delivered", "Cancelled"];
+    if (nonCancellableStatuses.includes(order.status)) {
+      return res.status(400).json({
+        message: `Order cannot be cancelled because it is already ${order.status}.`,
+      });
+    }
+
+    // Transition state to Cancelled
+    order.status = "Cancelled";
+    order.cancelledAt = Date.now();
+    await order.save();
+
+    res.json({ message: "Order cancelled successfully", order });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 module.exports = {
   createOrder,
@@ -99,5 +118,5 @@ module.exports = {
   myOrders,
   getOrderById,
   updateOrderStatus,
-  deleteOrder
+  cancelOrder
 };
