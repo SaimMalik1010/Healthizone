@@ -113,30 +113,25 @@ const updateOrderAddress = async (req, res) => {
 // @desc    Cancel an order (User)
 // @route   PUT /api/orders/:id/cancel
 // @access  Private
+// ELEGANT BACKEND APPROACH
 const cancelOrder = async (req, res) => {
   try {
-    const order = await Order.findById(req.params.id);
+    // Find the order ONLY if it matches both the Order ID AND the Logged-in User ID
+    const order = await Order.findOne({
+      _id: req.params.id,
+      user: req.user.id // Enforces ownership automatically
+    });
 
     if (!order) {
+      // Return 404 so potential attackers can't even probe whether the ID exists
       return res.status(404).json({ message: "Order not found" });
     }
 
-    // Authorization check
-    if (order.user.toString() !== req.user.id) {
-      return res.status(403).json({ message: "Not authorized to cancel this order" });
+    if (["Shipped", "Delivered", "Cancelled"].includes(order.status)) {
+      return res.status(400).json({ message: `Cannot cancel an order that is ${order.status}` });
     }
 
-    // Threshold Check: Block cancellation if already dispatched or terminal
-    const nonCancellableStatuses = ["Shipped", "Delivered", "Cancelled"];
-    if (nonCancellableStatuses.includes(order.status)) {
-      return res.status(400).json({
-        message: `Order cannot be cancelled because it is already ${order.status}.`,
-      });
-    }
-
-    // Transition state to Cancelled
     order.status = "Cancelled";
-    order.cancelledAt = Date.now();
     await order.save();
 
     res.json({ message: "Order cancelled successfully", order });
