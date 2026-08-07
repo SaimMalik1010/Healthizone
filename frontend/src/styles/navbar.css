@@ -1,0 +1,88 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 1rem;
+    color: #ffff;
+}
+
+.navbar
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+.navbar
+    .nav-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+.navbar
+    .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+.navbar
+    .nav-links a:hover {
+        color: #ff6347;
+    }
+
+.navbar
+    .cart-icon {
+        position: relative;
+        cursor: pointer;
+    }
+
+.navbar
+    .cart-icon img {
+        width: 24px;
+        height: 24px;
+    }
+
+.navbar
+    .cart-icon .cart-count {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        padding: 0.2rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+.navbar
+    .cart-icon::after {
+        content: attr(data-count);
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        padding: 0.2rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+.navbar
+    .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+.navbar
+    .user-profile img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+.navbar
+    .user-profile span {
+        font-size: 1rem;
+    }
