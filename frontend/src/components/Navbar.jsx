@@ -50,7 +50,7 @@ function Navbar() {
                             </li>
                         )}
                         <li>
-                                <button onClick={handleLogout}>Logout</button>
+                                <button onClick={handleLogout} className = "btn-logout">Logout</button>
                             </li>
                     </>
                 )
