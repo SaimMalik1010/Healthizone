@@ -86,3 +86,16 @@
     .user-profile span {
         font-size: 1rem;
     }
+
+.btn-logout {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #ff4500;
+}

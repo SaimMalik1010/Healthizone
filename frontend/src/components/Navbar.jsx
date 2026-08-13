@@ -1,17 +1,15 @@
 
-import React from 'react';
-import { AuthContext } from '../context/AuthContext'; // Assuming you have an AuthContext
-import { useSelector } from 'react-redux'; 
+import React, { useContext } from 'react';
+import { AuthContext } from '../context/authContext';
 import { useNavigate } from 'react-router-dom';
 
 import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
 
 function Navbar() {
-    const {user , logout} = useAuth(AuthContext); // Assuming you have an auth context or hook
+    const { user, logout } = useContext(AuthContext);
 
-    const cartItems = useSelector((state) => state.cart.items); // Assuming you have a cart state in your Redux store
-    const navigate = useNavigate(); // Assuming you are using react-router for navigation
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         logout();
