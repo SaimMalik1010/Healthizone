@@ -1,0 +1,135 @@
+/* ==========================================================================
+   LIGHT & FRESH FOOTER STYLES
+   ========================================================================== */
+
+.site-footer {
+  background-color: #ffffff; /* Clean white background matching navbar */
+  color: #64748b;
+  padding: 4rem 1.5rem 0 1.5rem; /* Generous breathing room */
+  margin-top: 4rem;
+  border-top: 1px solid #e2e8f0; /* Subtle top separation border */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 4rem; /* Wide spacing between columns */
+  padding-bottom: 3.5rem;
+}
+
+/* Brand Column */
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1.2rem;
+}
+
+.footer-logo img {
+  height: 36px;
+  width: auto;
+}
+
+.footer-logo span {
+  color: #0d9488; /* Fresh Teal Brand Color */
+}
+
+.footer-tagline {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 320px;
+  color: #64748b;
+}
+
+/* Column Titles */
+.footer-col h4 {
+  color: #0f172a;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.2px;
+}
+
+/* Link Lists */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footer-links a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #0d9488;
+  transform: translateX(3px); /* Subtle slide hover effect */
+}
+
+.social-text {
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  color: #64748b;
+}
+
+/* Social Link Pill Buttons */
+.footer-socials {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.footer-socials a {
+  color: #475569;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.footer-socials a:hover {
+  background-color: #f0fdf4;
+  border-color: #ccfbf1;
+  color: #0d9488;
+  transform: translateY(-2px);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  border-top: 1px solid #f1f5f9;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.8rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .site-footer {
+    padding-top: 2.5rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}

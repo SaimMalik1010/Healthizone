@@ -1,0 +1,238 @@
+/* ==========================================================================
+   HOME PAGE STYLES (Fresh Teal Theme)
+   ========================================================================== */
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 3rem 1.5rem;
+}
+
+/* --- Hero Section --- */
+.hero-banner {
+  background: linear-gradient(135deg, #f0fdf4 0%, #e6fffa 100%);
+  border: 1px solid #ccfbf1;
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  margin-bottom: 3.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #0d9488;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  border: 1px solid #99f6e4;
+  margin-bottom: 1.25rem;
+}
+
+.hero-banner h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.brand-highlight {
+  color: #0d9488;
+}
+
+.hero-banner p {
+  font-size: 1.1rem;
+  color: #475569;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.btn-hero {
+  background-color: #0d9488;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+}
+
+.btn-hero:hover {
+  background-color: #0f766e;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #334155;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #f8fafc;
+  color: #0d9488;
+  border-color: #99f6e4;
+}
+
+/* Hero Feature Badges */
+.hero-features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(13, 148, 136, 0.15);
+  padding-top: 1.75rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #334155;
+}
+
+.feature-icon {
+  font-size: 1.1rem;
+}
+
+/* --- Featured Products Section --- */
+.featured-products {
+  margin-top: 2rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  color: #0f172a;
+  margin-bottom: 0.4rem;
+}
+
+.section-subtitle {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* Product Responsive Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.view-all-wrapper {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 10px 24px;
+  border: 2px solid #0d9488;
+  color: #0d9488;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  background-color: #0d9488;
+  color: #ffffff;
+}
+
+/* --- Loading Skeleton Animations --- */
+.product-skeleton {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.skeleton-img {
+  width: 100%;
+  height: 180px;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-text {
+  height: 16px;
+  background-color: #f1f5f9;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-text.short {
+  width: 60%;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-banner {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .hero-banner h1 {
+    font-size: 2rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-hero,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
