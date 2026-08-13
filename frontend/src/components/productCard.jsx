@@ -1,17 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "../styles/product.css";
+import "../styles/product.css";
 
 const ProductCard = ({ product }) => {
+    const productId = product._id || product.id;
+
     return (
-        <div className={styles.productCard}>
-            <Link to={`/product/${product.id}`} className={styles.productLink}>
-                <img src={product.image} alt={product.name} className={styles.productImage} />
-                <h3 className={styles.productName}>{product.name}</h3>
-                <p className={styles.productPrice}>${product.price}</p>
+        <article className="product-card">
+            <Link to={`/products/${productId}`} className="product-link">
+                <img src={product.imageUrl || product.image} alt={product.name} className="product-image" />
+                <h3 className="product-name">{product.name}</h3>
+                <p className="product-price">${Number(product.price).toFixed(2)}</p>
             </Link>
-        </div>
+        </article>
     );
-}
+};
 
 export default ProductCard;
