@@ -1,0 +1,365 @@
+/* ==========================================================================
+   PRODUCT DETAILS PAGE STYLES (Fresh Teal Theme)
+   ========================================================================== */
+
+.pd-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 4rem 1.5rem;
+  position: relative;
+}
+
+/* --- Toast Feedback --- */
+.pd-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #0d9488;
+  color: #ffffff;
+  padding: 0.85rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Breadcrumbs --- */
+.pd-breadcrumb {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.pd-breadcrumb a {
+  color: #64748b;
+  text-decoration: none;
+}
+
+.pd-breadcrumb a:hover {
+  color: #0d9488;
+}
+
+.pd-breadcrumb span {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* --- Main Layout Grid --- */
+.pd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+  margin-bottom: 4rem;
+}
+
+/* --- Gallery Section --- */
+.pd-main-image-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 420px;
+}
+
+.pd-main-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.pd-thumbnails {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.pd-thumb-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.25rem;
+  cursor: pointer;
+  width: 64px;
+  height: 64px;
+  transition: all 0.2s ease;
+}
+
+.pd-thumb-btn.active,
+.pd-thumb-btn:hover {
+  border-color: #0d9488;
+  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.2);
+}
+
+.pd-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* --- Info Section --- */
+.pd-category {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #0d9488;
+  background-color: #ccfbf1;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-bottom: 0.75rem;
+}
+
+.pd-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.pd-price-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.pd-price {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.pd-original-price {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.pd-stock-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+}
+
+.pd-stock-badge.in-stock {
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.pd-stock-badge.out-of-stock {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.pd-short-description {
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.pd-divider {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 1.75rem 0;
+}
+
+/* --- Actions & Quantity Controls --- */
+.pd-actions {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.pd-quantity-control label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.4rem;
+}
+
+.quantity-btn-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.quantity-btn-group button {
+  background: none;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.quantity-btn-group button:hover:not(:disabled) {
+  background-color: #f1f5f9;
+}
+
+.quantity-btn-group button:disabled {
+  color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.quantity-btn-group span {
+  padding: 0 0.75rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.btn-pd-cart {
+  flex: 1;
+  padding: 0.85rem 1.5rem;
+  background-color: #0d9488;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-pd-cart:hover:not(:disabled) {
+  background-color: #0f766e;
+  transform: translateY(-1px);
+}
+
+.btn-pd-cart:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* --- Value Perks --- */
+.pd-perks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.perk-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.perk-item span {
+  font-size: 1.5rem;
+}
+
+.perk-item strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #0f172a;
+}
+
+.perk-item p {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* --- Tabbed Details --- */
+.pd-tabs-section {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.pd-tab-headers {
+  display: flex;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+}
+
+.pd-tab-btn {
+  padding: 1rem 2rem;
+  border: none;
+  background: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.pd-tab-btn.active {
+  color: #0d9488;
+  border-bottom-color: #0d9488;
+  background-color: #ffffff;
+}
+
+.pd-tab-content {
+  padding: 2rem;
+  color: #475569;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* Loading & Error States */
+.pd-loading,
+.pd-error-state {
+  text-align: center;
+  padding: 5rem 1.5rem;
+}
+
+.pd-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e2e8f0;
+  border-top-color: #0d9488;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 1rem auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 868px) {
+  .pd-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .pd-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pd-perks {
+    grid-template-columns: 1fr;
+  }
+}
