@@ -1,0 +1,150 @@
+/* ==========================================================================
+   PRIVACY POLICY PAGE STYLES (Fresh Teal Theme)
+   ========================================================================== */
+
+.privacy-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 4rem 1.5rem;
+}
+
+/* --- Header Section --- */
+.privacy-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.privacy-badge {
+  display: inline-block;
+  background-color: #f0fdf4;
+  color: #0d9488;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  border: 1px solid #ccfbf1;
+  margin-bottom: 1rem;
+}
+
+.privacy-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.brand-highlight {
+  color: #0d9488;
+}
+
+.privacy-header p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* --- Summary Card --- */
+.privacy-summary-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  background: linear-gradient(135deg, #f0fdf4 0%, #e6fffa 100%);
+  border: 1px solid #ccfbf1;
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin-bottom: 3rem;
+}
+
+.summary-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.privacy-summary-card h3 {
+  font-size: 1.15rem;
+  color: #0f172a;
+  margin-bottom: 0.4rem;
+}
+
+.privacy-summary-card p {
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* --- Main Content Sections --- */
+.privacy-content {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.policy-section {
+  margin-bottom: 2.25rem;
+}
+
+.policy-section:last-child {
+  margin-bottom: 0;
+}
+
+.policy-section h2 {
+  font-size: 1.3rem;
+  color: #0f172a;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.policy-section p {
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 0.85rem;
+}
+
+.policy-section ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.policy-section li {
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.policy-section li strong {
+  color: #0f172a;
+}
+
+.inline-link {
+  color: #0d9488;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.inline-link:hover {
+    color: #0d9488;
+  text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .privacy-summary-card {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .privacy-content {
+    padding: 1.5rem;
+  }
+
+  .privacy-header h1 {
+    font-size: 2rem;
+  }
+}
